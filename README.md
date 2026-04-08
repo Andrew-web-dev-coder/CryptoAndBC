@@ -21,4 +21,4 @@ Metamask address - 0x90Ba964984c4EDcE1841ED54cd06CEa4b1F471e9
 ### Activity logs:
 ![tx1](screenshots/tx1.png)
 ![tx2](screenshots/tx2.png)
-![tx3](screenshots/tx2.png)
+![tx3](screenshots/tx3.png)
