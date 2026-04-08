@@ -19,3 +19,6 @@ Metamask address - 0x90Ba964984c4EDcE1841ED54cd06CEa4b1F471e9
 - normal nonce: https://sepolia.etherscan.io/tx/0x531ac19139ff309883dd055e86a79f877ffa7d7268059256ca684ae51a5afd9f
 
 ### Activity logs:
+![tx1](screenshots/tx1.png)
+![tx2](screenshots/tx2.png)
+![tx3](screenshots/tx2.png)
