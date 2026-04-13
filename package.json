@@ -1,0 +1,31 @@
+{
+  "name": "cryptoandbc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andrew-web-dev-coder/CryptoAndBC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Andrew-web-dev-coder/CryptoAndBC/issues"
+  },
+  "homepage": "https://github.com/Andrew-web-dev-coder/CryptoAndBC#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-viem": "^3.0.4",
+    "@types/node": "^22.19.17",
+    "hardhat": "^3.3.0",
+    "typescript": "~5.8.0",
+    "viem": "^2.47.16"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
