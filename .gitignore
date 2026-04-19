@@ -1,20 +1,33 @@
 # Node modules
-/node_modules
+node_modules/
 
-# Compilation output
-/dist
+# Environment variables (СЕКРЕТЫ!)
+.env
+.env.local
+.env.*.local
 
-# pnpm deploy output
-/bundle
+# Hardhat artifacts
+artifacts/
+cache/
 
-# Hardhat Build Artifacts
-/artifacts
+# TypeScript
+dist/
+build/
+*.tsbuildinfo
 
-# Hardhat compilation (v2) support directory
-/cache
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Typechain output
-/types
+# OS files
+.DS_Store
+Thumbs.db
 
-# Hardhat coverage reports
-/coverage
+# IDE
+.vscode/
+.idea/
+
+# Misc
+coverage/
