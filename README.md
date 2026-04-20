@@ -23,3 +23,4 @@ All tests passing:
 - TypeScript
 
 ## Screenshot
+![screenshot](screenshots/screenshot.png)
