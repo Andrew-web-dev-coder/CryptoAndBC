@@ -1,6 +1,7 @@
 # ERC20 Token - Assignment 6
 
 ## Contract
+Contract Address: 0x5ff7a8b09fc03124ff161a76e83110047ffbd515
 Deployed on Sepolia:
 https://sepolia.etherscan.io/address/0x5ff7a8b09fc03124ff161a76e83110047ffbd515
 
