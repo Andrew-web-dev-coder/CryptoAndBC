@@ -23,4 +23,4 @@ All tests passing:
 - TypeScript
 
 ## Screenshot
-![screenshot](screenshots/screenshot.png)
+![tx1](screenshots/tx1.png)
