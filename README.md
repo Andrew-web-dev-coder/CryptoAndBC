@@ -24,13 +24,13 @@
 
 ## Explorer Links
 
-### 🔹 Mint Transaction
+### Mint Transaction
 https://sepolia.etherscan.io/tx/0x9a7895fdc2149df614b0c647b62099914848d4c710e4a17fc97892427528c2a1
 
-### 🔹 Transfer Transaction
+### Transfer Transaction
 https://sepolia.etherscan.io/tx/0x3e0ed487070406398cbe9f3b8fb5ae74e27e4dc39149ce953caa6ceea8472fba
 
-### 🔹 Upgrade Transaction
+### Upgrade Transaction
 https://sepolia.etherscan.io/tx/0x1534a89110b9f4799d2bd1dd659b8209d532ff3b4ba5bbbc9e459d33ec5a0c22
 
 ---
@@ -53,7 +53,7 @@ Recipient: 600000000000000000000
 
 ### V2 Implementation
 
-0x16f785dbfe6a3eae935853f83a8e79be779f3d01
+0x657f3cd8f2b7c339558a73c6926fea80b5b2f40a
 
 
 Upgrade executed via proxy.
