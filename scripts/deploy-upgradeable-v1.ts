@@ -6,8 +6,11 @@ const { viem, networkName } = await network.connect();
 async function main() {
   console.log(`Deploying V1 implementation and proxy to ${networkName}...`);
 
-  const [owner, user] = await viem.getWalletClients();
+  const [owner] = await viem.getWalletClients();
   const publicClient = await viem.getPublicClient();
+
+ 
+  const recipientAddress = "0xB6BD4993dd10aAB4fD548BB84f464e95655A5A23" as `0x${string}`;
 
   const initialSupply = parseUnits("1000000", 18);
 
@@ -25,24 +28,24 @@ async function main() {
 
   const token = await viem.getContractAt("MyTokenV1", proxy.address);
 
-  const mintHash = await token.write.mint([user.account.address, parseUnits("500", 18)], {
+  const mintHash = await token.write.mint([recipientAddress, parseUnits("500", 18)], {
     account: owner.account,
   });
   await publicClient.waitForTransactionReceipt({ hash: mintHash });
   console.log("Mint tx:", mintHash);
 
-  const transferHash = await token.write.transfer([user.account.address, parseUnits("100", 18)], {
+  const transferHash = await token.write.transfer([recipientAddress, parseUnits("100", 18)], {
     account: owner.account,
   });
   await publicClient.waitForTransactionReceipt({ hash: transferHash });
   console.log("Transfer tx:", transferHash);
 
   const ownerBalance = await token.read.balanceOf([owner.account.address]);
-  const userBalance = await token.read.balanceOf([user.account.address]);
+  const recipientBalance = await token.read.balanceOf([recipientAddress]);
   const version = await token.read.version();
 
   console.log("Owner balance:", ownerBalance.toString());
-  console.log("User balance:", userBalance.toString());
+  console.log("Recipient balance:", recipientBalance.toString());
   console.log("Version via proxy:", version);
 }
 
