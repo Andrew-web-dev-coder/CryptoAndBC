@@ -86,7 +86,7 @@ Confirms successful upgrade
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### 1. Mint & Transfer (V1)
 ![Mint](./screenshots/mint.png)
