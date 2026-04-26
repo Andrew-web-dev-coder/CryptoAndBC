@@ -1,119 +1,139 @@
-# Upgradeable ERC20 Contract (Assignment 7)
+# MultiSig Wallet (Solidity + Hardhat)
 
-## Contracts
+## Overview
 
-- ERC20 V1: `MyTokenV1.sol`
-- Proxy Contract: `MyProxy.sol`
-- ERC20 V2: `MyTokenV2.sol`
+This project implements a **Multi-Signature Wallet** smart contract in Solidity.
 
----
-
-## Deployment (Sepolia)
-
-### V1 Implementation
-
-0x331e36e18cc3bad8173a1a9ac4a9d905e0a1ed3
-
-
-### Proxy Contract
-
-0x72296cce0631c4da354ddd6c3cfcc6e2a2755a2f
-
+A multi-sig wallet requires **multiple owners to approve a transaction** before it can be executed, increasing security and preventing single-point failures.
 
 ---
 
-## Explorer Links
+## Features
 
-### Mint Transaction
-https://sepolia.etherscan.io/tx/0x9a7895fdc2149df614b0c647b62099914848d4c710e4a17fc97892427528c2a1
-
-### Transfer Transaction
-https://sepolia.etherscan.io/tx/0x3e0ed487070406398cbe9f3b8fb5ae74e27e4dc39149ce953caa6ceea8472fba
-
-### Upgrade Transaction
-https://sepolia.etherscan.io/tx/0x1534a89110b9f4799d2bd1dd659b8209d532ff3b4ba5bbbc9e459d33ec5a0c22
-
----
-
-## Functionality Test (V1 via Proxy)
-
-- Mint tokens 
-- Transfer tokens 
-
-Balances before upgrade:
-
-
-Owner: 999900000000000000000000
-Recipient: 600000000000000000000
-
+- Multiple owners
+- Configurable confirmation threshold
+- Submit transactions (ETH transfer)
+- Confirm transactions
+- Revoke confirmations
+- Execute transactions after enough confirmations
+- Protection against:
+  - duplicate confirmations
+  - unauthorized access
+  - premature execution
 
 ---
 
-## Upgrade to V2
+## Contract Design
 
-### V2 Implementation
+The contract stores:
 
-0x657f3cd8f2b7c339558a73c6926fea80b5b2f40a
+- `owners[]` — list of wallet owners
+- `required` — minimum confirmations required
+- `transactions[]` — list of submitted transactions
 
+Each transaction contains:
 
-Upgrade executed via proxy.
+- `to` — recipient address
+- `value` — amount of ETH
+- `data` — call data
+- `executed` — execution status
+- `numConfirmations` — number of confirmations
 
----
+### Transaction Lifecycle
 
-## Validation After Upgrade
-
-Balances after upgrade:
-
-
-Owner: 999900000000000000000000
-Recipient: 600000000000000000000
-
-
-Storage preserved  
-Proxy correctly delegates to new implementation  
-
----
-
-## Version Check
-
-Calling `version()` via proxy:
-
-
-V2
-
-
-Confirms successful upgrade  
+1. Submit transaction
+2. Owners confirm transaction
+3. (Optional) Owners revoke confirmation
+4. Execute transaction after threshold is reached
 
 ---
 
-## Screenshots
+## Deployment
 
-### 1. Mint & Transfer (V1)
-![Mint](./screenshots/mint.png)
-![Transfer](./screenshots/transfer.png)
+### 1. Install dependencies
 
-### 2. Upgrade Transaction
-![Upgrade](./screenshots/upgrade.png)
+```bash
+npm install
+2. Configure .env
+SEPOLIA_URL=YOUR_RPC_URL
+PRIVATE_KEY=YOUR_PRIVATE_KEY
+3. Deploy contract
+npx hardhat run scripts/deploy-multisig.ts --network sepolia
+Usage
+1. Send ETH to contract
 
-### 3. Balances After Upgrade
-![Balances](./screenshots/balances.png)
+Send ETH from MetaMask to deployed contract address.
 
-### 4. version() Output
-![Version](./screenshots/version.png)
-![VersionV2](./screenshots/versionV2.png)
+2. Submit transaction
+npx hardhat run scripts/submit-tx.ts --network sepolia
+3. Confirm transaction
 
----
+Each owner runs:
 
-## Scripts
+npx hardhat run scripts/confirm-tx.ts --network sepolia
+4. Execute transaction
+npx hardhat run scripts/execute-tx.ts --network sepolia
+ Testing
 
-- `deploy-upgradeable-v1.ts`
-- `upgrade-to-v2.ts`
+Run tests:
 
----
+npx hardhat test
+Covered cases:
+Deployment with correct owners
+Transaction submission
+Confirmations by multiple owners
+Revoking confirmations
+Execution after required confirmations
+Edge cases:
+duplicate confirmations
+non-owner actions
+insufficient confirmations
 
-##  Tech Stack
+All tests passing.
 
-- Solidity
-- Hardhat
-- Viem
-- Sepolia Testnet
+ Security Considerations
+Only owners can interact with critical functions
+Prevents duplicate confirmations
+Uses confirmation threshold before execution
+Follows checks-effects-interactions pattern
+Protects against unauthorized execution
+Example Transaction (Sepolia)
+
+Contract deployed at:
+
+0x54d74a538bc58d9a6d4a19b9407f49e3fdb66351
+
+Example transaction:
+
+Sent ETH to contract
+Submitted multi-sig transaction
+Confirmed by multiple owners
+Executed successfully
+Reflection
+
+Multi-signature wallets significantly improve security in decentralized systems.
+
+They prevent:
+
+single private key compromise
+accidental transactions
+unauthorized fund transfers
+
+They are widely used in:
+
+DAOs
+DeFi protocols
+treasury management
+ Tech Stack
+Solidity (0.8.x)
+Hardhat
+TypeScript
+Viem
+Ethers.js
+Mocha + Chai
+Status
+
+--- Contract implemented
+--- Deployed on Sepolia
+--- Fully tested
+--- All features working

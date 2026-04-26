@@ -1,13 +1,14 @@
 import { defineConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-ethers";
 import hardhatViem from "@nomicfoundation/hardhat-viem";
 import hardhatVerify from "@nomicfoundation/hardhat-verify";
+import hardhatMocha from "@nomicfoundation/hardhat-mocha";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 export default defineConfig({
-  plugins: [hardhatViem, hardhatVerify],
-
+  plugins: [hardhatViem, hardhatVerify, hardhatMocha],
   solidity: {
     version: "0.8.28",
   },
