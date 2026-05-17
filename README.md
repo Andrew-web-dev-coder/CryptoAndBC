@@ -137,3 +137,11 @@ Status
 --- Deployed on Sepolia
 --- Fully tested
 --- All features working
+
+
+
+
+
+
+Soulbound ERC-721 mint tx:
+0x40d88abda19dacb760f2ff9db6c82fcc5a7bbdffadc0ca96128e5e94c771d998
