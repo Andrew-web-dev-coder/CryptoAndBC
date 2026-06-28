@@ -1,147 +1,141 @@
-# MultiSig Wallet (Solidity + Hardhat)
+# NFT Collection - Assignment 9
 
 ## Overview
 
-This project implements a **Multi-Signature Wallet** smart contract in Solidity.
+This project implements two NFT smart contracts on Ethereum Sepolia:
 
-A multi-sig wallet requires **multiple owners to approve a transaction** before it can be executed, increasing security and preventing single-point failures.
+1. ERC-721 Soulbound Student Visit Card
+2. ERC-1155 Game Character Collection
 
----
+## Contracts
 
-## Features
+### SoulboundVisitCardERC721.sol
 
-- Multiple owners
-- Configurable confirmation threshold
-- Submit transactions (ETH transfer)
-- Confirm transactions
-- Revoke confirmations
-- Execute transactions after enough confirmations
-- Protection against:
-  - duplicate confirmations
-  - unauthorized access
-  - premature execution
+ERC-721 NFT representing a student visit card.
 
----
+Features:
+- Uses OpenZeppelin ERC-721
+- Only contract owner can mint
+- One unique NFT per student
+- Metadata includes student data and image URI
+- Soulbound behavior: transfers and approvals are blocked after minting
 
-## Contract Design
+### GameCharacterCollectionERC1155.sol
 
-The contract stores:
+ERC-1155 collection of 10 game character NFTs.
 
-- `owners[]` — list of wallet owners
-- `required` — minimum confirmations required
-- `transactions[]` — list of submitted transactions
+Features:
+- Uses OpenZeppelin ERC-1155
+- 10 distinct token IDs
+- Each token represents a game character
+- Metadata URI support
+- Batch minting
+- Batch transfers
+- Owner-only minting
 
-Each transaction contains:
+## Tech Stack
 
-- `to` — recipient address
-- `value` — amount of ETH
-- `data` — call data
-- `executed` — execution status
-- `numConfirmations` — number of confirmations
-
-### Transaction Lifecycle
-
-1. Submit transaction
-2. Owners confirm transaction
-3. (Optional) Owners revoke confirmation
-4. Execute transaction after threshold is reached
-
----
+- Solidity 0.8.28
+- Hardhat
+- TypeScript
+- OpenZeppelin Contracts
+- Viem
+- Sepolia Testnet
 
 ## Deployment
 
-### 1. Install dependencies
+Install dependencies:
 
 ```bash
 npm install
-2. Configure .env
+
+Configure .env:
+
 SEPOLIA_URL=YOUR_RPC_URL
 PRIVATE_KEY=YOUR_PRIVATE_KEY
-3. Deploy contract
-npx hardhat run scripts/deploy-multisig.ts --network sepolia
-Usage
-1. Send ETH to contract
+ETHERSCAN_API_KEY=YOUR_ETHERSCAN_API_KEY
 
-Send ETH from MetaMask to deployed contract address.
+Deploy contracts:
 
-2. Submit transaction
-npx hardhat run scripts/submit-tx.ts --network sepolia
-3. Confirm transaction
+npx hardhat run scripts/deploy-nft.ts --network sepolia
 
-Each owner runs:
+Minting
 
-npx hardhat run scripts/confirm-tx.ts --network sepolia
-4. Execute transaction
-npx hardhat run scripts/execute-tx.ts --network sepolia
- Testing
+Mint ERC-721 soulbound visit card:
 
-Run tests:
+npx hardhat run scripts/mint-visit-card.ts --network sepolia
 
-npx hardhat test
-Covered cases:
-Deployment with correct owners
-Transaction submission
-Confirmations by multiple owners
-Revoking confirmations
-Execution after required confirmations
-Edge cases:
-duplicate confirmations
-non-owner actions
-insufficient confirmations
+Mint ERC-1155 game characters:
 
-All tests passing.
+npx hardhat run scripts/mint-game-characters.ts --network sepolia
 
- Security Considerations
-Only owners can interact with critical functions
-Prevents duplicate confirmations
-Uses confirmation threshold before execution
-Follows checks-effects-interactions pattern
-Protects against unauthorized execution
-Example Transaction (Sepolia)
+Mint ERC-1155 game characters directly to student wallet:
 
-Contract deployed at:
+npx hardhat run scripts/mint-game-characters-to-student.ts --network sepolia
 
-0x54d74a538bc58d9a6d4a19b9407f49e3fdb66351
+Transfer Demonstration
 
-Example transaction:
+ERC-721 soulbound transfer test:
 
-Sent ETH to contract
-Submitted multi-sig transaction
-Confirmed by multiple owners
-Executed successfully
-Reflection
+npx hardhat run scripts/try-transfer-visit-card.ts --network sepolia
 
-Multi-signature wallets significantly improve security in decentralized systems.
+Expected result:
 
-They prevent:
+Transfer failed as expected.
+Soulbound protection works.
 
-single private key compromise
-accidental transactions
-unauthorized fund transfers
+ERC-1155 batch transfer:
 
-They are widely used in:
+npx hardhat run scripts/transfer-game-characters.ts --network sepolia
 
-DAOs
-DeFi protocols
-treasury management
- Tech Stack
-Solidity (0.8.x)
-Hardhat
-TypeScript
-Viem
-Ethers.js
-Mocha + Chai
-Status
+Metadata
 
---- Contract implemented
---- Deployed on Sepolia
---- Fully tested
---- All features working
+Metadata is stored off-chain using URI links.
 
+ERC-721 uses tokenURI.
 
+ERC-1155 uses uri(id) with token ID substitution.
 
+Each NFT contains:
 
+unique image URI
+character or student name
+attributes such as course, year, rarity, strength, speed, or role
+Proof of Functionality
+Deployed Contracts on Sepolia
 
+ERC-721 Soulbound Visit Card:
 
-Soulbound ERC-721 mint tx:
+0x63b7a3c37812ee69ab27310156c3a0abf85a9ae1
+
+ERC-1155 Game Character Collection:
+
+0x1f7dc247cd185028d308c6cf7e05442575cf3ca0
+Transaction Hashes
+
+Soulbound ERC-721 mint transaction:
+
 0x40d88abda19dacb760f2ff9db6c82fcc5a7bbdffadc0ca96128e5e94c771d998
+
+ERC-1155 batch mint transaction:
+
+0xda230bb6e1a3610b708d641d013e75a55950c684b94dd1ec28aac3ca2da03b19
+
+ERC-1155 mint to student wallet transaction:
+
+0x152e946ddc796eb518e97e12f2a5ccac7b6631334ac0196d07edacccb7497
+Security Notes
+Minting is restricted to the contract owner
+ERC-721 token is soulbound and cannot be transferred
+ERC-721 approvals are disabled
+ERC-1155 supports normal transfers and approvals
+Contracts use OpenZeppelin audited implementations
+Contracts are separated to avoid standard/interface conflicts
+Status
+ERC-721 contract implemented
+ERC-1155 contract implemented
+Contracts deployed on Sepolia
+ERC-721 mint completed
+Soulbound protection demonstrated
+ERC-1155 batch mint completed
+ERC-1155 student mint completed
