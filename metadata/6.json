@@ -1,0 +1,15 @@
+{
+    "name":  "Tank",
+    "description":  "ERC-1155 game character NFT",
+    "image":  "ipfs://bafybeigfin7m7pwsylkk377p6fekmk34x5j2byimp4ivdobccuhut4vgfe/Tank.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Defense",
+                           "value":  100
+                       },
+                       {
+                           "trait_type":  "Rarity",
+                           "value":  "Epic"
+                       }
+                   ]
+}

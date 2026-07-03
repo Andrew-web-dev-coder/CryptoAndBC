@@ -8,11 +8,22 @@ contract GameCharacterCollectionERC1155 is ERC1155, Ownable {
     uint256 public constant WARRIOR = 1;
     uint256 public constant MAGE = 2;
     uint256 public constant ARCHER = 3;
+    uint256 public constant ASSASSIN = 4;
+    uint256 public constant HEALER = 5;
+    uint256 public constant TANK = 6;
+    uint256 public constant DRAGON = 7;
+    uint256 public constant ELF = 8;
+    uint256 public constant KNIGHT = 9;
+    uint256 public constant NECROMANCER = 10;
 
     constructor()
-        ERC1155("https://example.com/metadata/{id}.json")
+        ERC1155("https://gateway.lighthouse.storage/ipfs/bafybeigyypxnyih2h6p66uy5gn73pkgk4vq6dip4nfdnfynlwifk3johu4/{id}.json")
         Ownable(msg.sender)
     {}
+
+    function isValidCharacter(uint256 id) public pure returns (bool) {
+        return id >= WARRIOR && id <= NECROMANCER;
+    }
 
     function mintCharacter(
         address to,
@@ -20,7 +31,7 @@ contract GameCharacterCollectionERC1155 is ERC1155, Ownable {
         uint256 amount,
         bytes memory data
     ) external onlyOwner {
-        require(id == WARRIOR || id == MAGE || id == ARCHER, "Invalid character ID");
+        require(isValidCharacter(id), "Invalid character ID");
         _mint(to, id, amount, data);
     }
 
@@ -31,7 +42,7 @@ contract GameCharacterCollectionERC1155 is ERC1155, Ownable {
         bytes memory data
     ) external onlyOwner {
         for (uint256 i = 0; i < ids.length; i++) {
-            require(ids[i] == WARRIOR || ids[i] == MAGE || ids[i] == ARCHER, "Invalid character ID");
+            require(isValidCharacter(ids[i]), "Invalid character ID");
         }
 
         _mintBatch(to, ids, amounts, data);

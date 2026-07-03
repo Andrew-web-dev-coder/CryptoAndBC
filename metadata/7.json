@@ -1,0 +1,15 @@
+{
+    "name":  "Dragon",
+    "description":  "ERC-1155 game character NFT",
+    "image":  "ipfs://bafybeigfin7m7pwsylkk377p6fekmk34x5j2byimp4ivdobccuhut4vgfe/Dragon.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Fire",
+                           "value":  100
+                       },
+                       {
+                           "trait_type":  "Rarity",
+                           "value":  "Mythic"
+                       }
+                   ]
+}

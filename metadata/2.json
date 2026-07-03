@@ -1,0 +1,15 @@
+{
+    "name":  "Mage",
+    "description":  "ERC-1155 game character NFT",
+    "image":  "ipfs://bafybeigfin7m7pwsylkk377p6fekmk34x5j2byimp4ivdobccuhut4vgfe/Mage.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Magic",
+                           "value":  99
+                       },
+                       {
+                           "trait_type":  "Rarity",
+                           "value":  "Legendary"
+                       }
+                   ]
+}

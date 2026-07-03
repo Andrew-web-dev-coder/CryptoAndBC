@@ -1,0 +1,15 @@
+{
+    "name":  "Warrior",
+    "description":  "ERC-1155 game character NFT",
+    "image":  "ipfs://bafybeigfin7m7pwsylkk377p6fekmk34x5j2byimp4ivdobccuhut4vgfe/Warrior.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Strength",
+                           "value":  95
+                       },
+                       {
+                           "trait_type":  "Rarity",
+                           "value":  "Epic"
+                       }
+                   ]
+}

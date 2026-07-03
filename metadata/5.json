@@ -1,0 +1,15 @@
+{
+    "name":  "Healer",
+    "description":  "ERC-1155 game character NFT",
+    "image":  "ipfs://bafybeigfin7m7pwsylkk377p6fekmk34x5j2byimp4ivdobccuhut4vgfe/Healer.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Healing",
+                           "value":  94
+                       },
+                       {
+                           "trait_type":  "Rarity",
+                           "value":  "Rare"
+                       }
+                   ]
+}

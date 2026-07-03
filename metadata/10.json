@@ -1,0 +1,15 @@
+{
+    "name":  "Necromancer",
+    "description":  "ERC-1155 game character NFT",
+    "image":  "ipfs://bafybeigfin7m7pwsylkk377p6fekmk34x5j2byimp4ivdobccuhut4vgfe/Necromancer.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Dark Magic",
+                           "value":  98
+                       },
+                       {
+                           "trait_type":  "Rarity",
+                           "value":  "Legendary"
+                       }
+                   ]
+}

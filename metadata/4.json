@@ -1,0 +1,15 @@
+{
+    "name":  "Assassin",
+    "description":  "ERC-1155 game character NFT",
+    "image":  "ipfs://bafybeigfin7m7pwsylkk377p6fekmk34x5j2byimp4ivdobccuhut4vgfe/Assassin.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Stealth",
+                           "value":  97
+                       },
+                       {
+                           "trait_type":  "Rarity",
+                           "value":  "Epic"
+                       }
+                   ]
+}
